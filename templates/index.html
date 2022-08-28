@@ -1,0 +1,52 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header>
+    <div class="bg-primary pt-5">
+      <div class="row pt-5 bg-primary">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          <div class="subheading">
+            <h4 class="pb-3 text-light">Today to-do list {{ today }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <form action="/" name="CreateTodo" id="TodoTask" method="post" novalidate>
+    <div class="col-lg-10 col-md-10 py-3 mx-auto">
+      <input name="new_task" type="text" value="" class="form-control" placeholder="Write your next task here..." id="new_task" required data-validation-required-message="Please enter your name.">
+      <input type="submit" hidden />
+    </div>
+  </form>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <hr>
+        {% for task in all_tasks %}
+        <div class="post-preview form-check">
+          <form action="/" name="CreateTodo" id="TodoProgress" method="post" novalidate>
+          <div class="custom-control custom-checkbox checkbox-xl">
+              <input class="custom-control-input" type="checkbox" value="" id="{{task.id}}" name="{{task.progress}}">
+              <input type="submit" hidden />
+              <label class="custom-control-label" for="{{task.id}}">
+              {{task.title}}
+              </label>
+              </div>
+            </form>
+            <hr>
+          </a>
+        </div>
+        {% endfor %}
+
+
+        <!-- New Post -->
+
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}
